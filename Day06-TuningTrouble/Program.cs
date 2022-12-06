@@ -1,7 +1,8 @@
-﻿using Utility;
-using InputParser = RockPaperScissors.InputParser;
+﻿using TuningTrouble;
 
+// bool _debug = true;
 bool _debug = false;
+// bool _round1 = true;
 bool _round1 = false;
 
 string textFile = Path.Combine(Environment.CurrentDirectory, "../../../input.txt");
@@ -13,24 +14,27 @@ if (_debug)
 }
 
 InputParser parser = new InputParser(textFile);
-List<GameData> content = parser.GetContent();
+var content = parser.GetContent();
 
 int totalScore = 0;
-foreach (GameData data in content)
+
+foreach (var data in content)
 {
     int score = 0;
-    // Console.WriteLine(data.Player1);
     if (_round1)
     {
-        score = data.GetScore(data.Unknown);
+        score = data.GetStartMarker();
+        Console.WriteLine(score);
+
     }
     else
     {
-        score = data.GetScore(data.Player2);
+        score = data.GetStartMessage();
+        Console.WriteLine(score);
     }
 
-    Console.WriteLine(data.Player2 + " " + score);
     totalScore += score;
 }
+
 
 Console.WriteLine(totalScore);

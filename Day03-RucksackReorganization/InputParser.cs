@@ -1,6 +1,6 @@
 using Utility;
 
-namespace RockPaperScissors;
+namespace RucksackReorganization;
 
 public class InputParser
 {
@@ -11,18 +11,21 @@ public class InputParser
         _inputFile = input;
     }
 
-    public List<GameData> GetContent()
+    public List<Rucksack> GetContent()
     {
 
-        List<GameData> output = new List<GameData>();
+        List<Rucksack> output = new List<Rucksack>();
+
+
         using (StreamReader file = new StreamReader(_inputFile))
         {
 
-            string line;
+            string ln;
 
-            while ((line = file.ReadLine()) != null)
+            while ((ln = file.ReadLine()) != null)
             {
-                output.Add(new GameData(line));
+                Rucksack rucksack = new Rucksack(ln);
+                    output.Add(rucksack);
             }
             file.Close();
         }

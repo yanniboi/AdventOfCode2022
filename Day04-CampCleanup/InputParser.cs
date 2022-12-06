@@ -1,6 +1,6 @@
 using Utility;
 
-namespace RockPaperScissors;
+namespace CampCleanup;
 
 public class InputParser
 {
@@ -11,18 +11,18 @@ public class InputParser
         _inputFile = input;
     }
 
-    public List<GameData> GetContent()
+    public List<CampSearch> GetContent()
     {
 
-        List<GameData> output = new List<GameData>();
+        List<CampSearch> output = new List<CampSearch>();
         using (StreamReader file = new StreamReader(_inputFile))
         {
 
-            string line;
+            string ln;
 
-            while ((line = file.ReadLine()) != null)
+            while ((ln = file.ReadLine()) != null)
             {
-                output.Add(new GameData(line));
+                output.Add(new CampSearch(ln));
             }
             file.Close();
         }
